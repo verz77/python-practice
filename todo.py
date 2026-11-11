@@ -7,6 +7,32 @@ def show_tasks(tasks):
         for task in tasks:
             number = number + 1 
             print(f"{number}. {task}")
+
+def add_task(tasks):
+    text = input("Что добавить: ")
+    text = text.strip()
+    if text != "":
+        tasks.append(text)
+        print("Добавлено")
+    else:
+        print("Пустое дело не добавлено")
+
+def remove_task(tasks):
+    if len(tasks) == 0:
+        print("Удалять нечего")
+    else:
+        show_tasks(tasks)
+        text = input("Номер для удаления: ").strip()
+        if text.isdigit():
+            number = int(text)
+            if 1 <= number <= len(tasks):
+                    tasks.pop(number - 1)
+                    print("Удалено")
+            else:
+                print("Нет такого номера")
+        else:
+                print("нет такого номера")
+
 tasks = []
 while True:
     print("\n=== Список дел ===")
@@ -21,30 +47,10 @@ while True:
     elif choice == "1":
         show_tasks(tasks)
     elif choice == "2":
-        text = input("Что добавить: ")
-        text = text.strip()
-        if text != "":
-            tasks.append(text)
-            print("Добавлено")
-        else:
-            print("Пустое дело не добавлено")
+        add_task(tasks)
     elif choice == "3":
-        if len(tasks) == 0:
-            print("Удалять нечего")
-        else:
-            show_tasks(tasks)
-            text = input("Номер для удаления: ").strip()
-            if text.isdigit():
-                number = int(text)
-                if 1 <= number <= len(tasks):
-                    tasks.pop(number - 1)
-                    print("Удалено")
-                else:
-                    print("Нет такого номера")
-            else:
-                    print("нет такого номера")
-
-    else:
+        remove_task(tasks)
+    else:   
         print("Неверный выбор")
 
 
