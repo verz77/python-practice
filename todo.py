@@ -1,3 +1,19 @@
+import os 
+
+def save_tasks(tasks):
+    with open("todo.txt", "w", encoding="utf-8") as file:
+        for task in tasks:
+            file.write(task + "\n")
+
+def load_tasks():
+    tasks = []
+    if os.path.exists("todo.txt"):
+        with open("todo.txt", "r", encoding="utf-8") as file:
+            for line in file:
+                line = line.strip()
+                tasks.append(line)
+    return tasks
+
 #меню/ввод 1 
 def show_tasks(tasks):
     if len(tasks) == 0:
@@ -33,7 +49,7 @@ def remove_task(tasks):
         else:
             print("Нет такого номера")
 
-tasks = []
+tasks = load_tasks()
 while True:
     print("\n=== Список дел ===")
     print("1 - Показать дела")
@@ -48,10 +64,11 @@ while True:
         show_tasks(tasks)
     elif choice == "2":
         add_task(tasks)
+        save_tasks(tasks)
     elif choice == "3":
         remove_task(tasks)
+        save_tasks(tasks)
     else:   
         print("Неверный выбор")
-
 
 print("Пока!")
