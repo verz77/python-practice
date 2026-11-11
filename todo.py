@@ -31,7 +31,7 @@ def remove_task(tasks):
             else:
                 print("Нет такого номера")
         else:
-                print("нет такого номера")
+            print("Нет такого номера")
 
 tasks = []
 while True:
