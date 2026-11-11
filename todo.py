@@ -26,8 +26,8 @@ def remove_task(tasks):
         if text.isdigit():
             number = int(text)
             if 1 <= number <= len(tasks):
-                    tasks.pop(number - 1)
-                    print("Удалено")
+                tasks.pop(number - 1)
+                print("Удалено")
             else:
                 print("Нет такого номера")
         else:
