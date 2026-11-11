@@ -1,4 +1,12 @@
 #меню/ввод 1 
+def show_tasks(tasks):
+    if len(tasks) == 0:
+        print("Дел нет")
+    else:
+        number = 0
+        for task in tasks:
+            number = number + 1 
+            print(f"{number}. {task}")
 tasks = []
 while True:
     print("\n=== Список дел ===")
@@ -11,13 +19,7 @@ while True:
     if choice == "0":
         break
     elif choice == "1":
-        if len(tasks) == 0:
-            print("Дел нет")
-        else:
-            number = 0
-            for task in tasks:
-                number = number + 1 
-                print(f"{number}. {task}")
+        show_tasks(tasks)
     elif choice == "2":
         text = input("Что добавить: ")
         text = text.strip()
@@ -30,6 +32,7 @@ while True:
         if len(tasks) == 0:
             print("Удалять нечего")
         else:
+            show_tasks(tasks)
             text = input("Номер для удаления: ").strip()
             if text.isdigit():
                 number = int(text)
